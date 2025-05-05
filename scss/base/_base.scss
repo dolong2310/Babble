@@ -1,0 +1,129 @@
+@use "../abstracts";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-header: #fbfaff;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+input,
+textarea,
+select,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: inherit;
+}
+
+.heading-1,
+.heading-2,
+.heading-3 {
+  color: abstracts.$secondary-color;
+  font-weight: 700;
+
+  & + .sub-desc {
+    margin-top: 18px;
+
+    @include abstracts.breakpoint(lg) {
+      margin-top: 12px;
+    }
+  }
+}
+
+.heading-1 {
+  font-size: 7rem;
+  line-height: 1.14;
+
+  @include abstracts.breakpoint(xl) {
+    font-size: 6rem;
+  }
+
+  @include abstracts.breakpoint(lg) {
+    font-size: 5.5rem;
+  }
+
+  @include abstracts.breakpoint(lg) {
+    font-size: 3.6rem;
+    line-height: 1.27;
+  }
+}
+
+.heading-2 {
+  font-size: 4.2rem;
+  line-height: 1.24;
+
+  @include abstracts.breakpoint(lg) {
+    font-size: 3.4rem;
+  }
+
+  @include abstracts.breakpoint(sm) {
+    font-size: 2.6rem;
+    line-height: 1.38;
+  }
+}
+
+.heading-3 {
+  font-size: 2rem;
+  line-height: 1.5;
+
+  @include abstracts.breakpoint(lg) {
+    font-size: 1.6rem;
+  }
+
+  @include abstracts.breakpoint(sm) {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+}
+
+.sub-desc {
+  color: abstracts.$text-color;
+  font-size: 1.6rem;
+  line-height: 1.75;
+
+  @include abstracts.breakpoint(lg) {
+    font-size: 1.5rem;
+  }
+
+  @include abstracts.breakpoint(sm) {
+    font-size: 1.4rem;
+    line-height: 1.71;
+  }
+}

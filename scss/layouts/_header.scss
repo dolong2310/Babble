@@ -1,0 +1,146 @@
+@use "../abstracts";
+
+.header {
+  position: sticky;
+  top: -30px;
+  left: 0;
+  z-index: 100;
+  padding-top: 30px;
+  background: abstracts.$bg-color;
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+
+    @include abstracts.breakpoint(sm) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__nav {
+    @include abstracts.breakpoint(lg) {
+      display: none;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav-item--mobile {
+    display: none;
+
+    @include abstracts.breakpoint(sm) {
+      display: block;
+    }
+
+    & .header__nav-link {
+      color: abstracts.$secondary-color;
+      font-weight: 600;
+    }
+  }
+
+  &__nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 24px;
+    color: abstracts.$text-color;
+    font-size: 1.6rem;
+    line-height: 1.75;
+
+    @include abstracts.breakpoint(lg) {
+      display: flex;
+      padding: 12px 0;
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    @include abstracts.breakpoint(sm) {
+      display: none;
+    }
+
+    &-link {
+      padding: 12px 24px;
+      color: abstracts.$secondary-color;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.75;
+    }
+
+    &-btn {
+      --width: 116px;
+      --height: 48px;
+    }
+  }
+}
+
+.menu-btn {
+  display: none;
+  width: 18px;
+  cursor: pointer;
+
+  @include abstracts.breakpoint(lg) {
+    display: block;
+  }
+}
+
+.header-mobile {
+  display: none;
+
+  @include abstracts.breakpoint(lg) {
+    display: block;
+  }
+
+  .menu-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    width: 60%;
+    height: 100vh;
+    padding: 40px;
+    background: #fff;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: transform 0.25s ease-out;
+
+    @include abstracts.breakpoint(sm) {
+      width: 80%;
+    }
+
+    &__list {
+      margin-top: 32px;
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease-out;
+  }
+
+  .menu-checkbox {
+    &:checked {
+      & ~ .menu-drawer {
+        transform: translateX(0);
+        pointer-events: visible;
+      }
+
+      & ~ .overlay {
+        opacity: 1;
+        pointer-events: visible;
+      }
+    }
+  }
+}

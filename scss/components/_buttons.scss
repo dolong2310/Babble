@@ -1,0 +1,31 @@
+@use "../abstracts";
+
+.btn {
+  --width: 157px;
+  --height: 64px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: var(--width, 116px);
+  height: var(--height, 48px);
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.75;
+  line-height: var(--height, 48px);
+  text-align: center;
+  border-radius: 6px;
+  background: abstracts.$secondary-color;
+  transition: opacity 0.25s ease-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.btn-primary {
+  @extend .btn;
+  background: abstracts.$primary-color;
+}

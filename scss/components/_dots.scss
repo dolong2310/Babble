@@ -1,0 +1,32 @@
+@use "../abstracts";
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @include abstracts.breakpoint(sm) {
+    gap: 5px;
+  }
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d8d5de;
+  transition: background-color 0.25s ease-out, transform 0.25s ease-out;
+
+  @include abstracts.breakpoint(sm) {
+    width: 5px;
+    height: 5px;
+  }
+
+  &--active,
+  &:hover {
+    @extend .dot;
+    transform: scale(1.5);
+    background: abstracts.$primary-color;
+    cursor: pointer;
+  }
+}

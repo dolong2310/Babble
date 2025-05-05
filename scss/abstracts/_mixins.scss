@@ -1,0 +1,52 @@
+@use "sass:map";
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+@mixin breakpoint($key) {
+  $grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+  );
+
+  $breakpoint: map.get($grid-breakpoints, $key);
+  @if ($breakpoint) {
+    @media screen and (max-width: ($breakpoint - 0.02)) {
+      @content;
+    }
+  } @else {
+    @error "key #{breakpoint} does not support";
+  }
+}
+
+@mixin make-heading-underline($width, $bottom, $path) {
+  & mark {
+    position: relative;
+    color: inherit;
+    background-color: inherit;
+    z-index: 1;
+  }
+
+  & mark::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: $bottom;
+    width: $width;
+    height: 100%;
+    background-image: url($path);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    z-index: -1;
+  }
+}
